@@ -1,0 +1,44 @@
+# City saved on 2019/3/1@23:11:03
+
+# Window title
+Laboratorio 2: Punto 1
+# first street, first avenue, num streets, num avenues
+0 0 9 11
+# intersection size
+70
+
+   becker.robots.Wall 7 7 SOUTH
+   becker.robots.Wall 0 0 NORTH
+   becker.robots.Wall 0 0 WEST
+   becker.robots.Wall 0 1 NORTH
+   becker.robots.Wall 7 6 SOUTH
+   becker.robots.Wall 1 0 WEST
+   becker.robots.Wall 7 5 SOUTH
+   becker.robots.Wall 0 2 NORTH
+   becker.robots.Wall 2 0 WEST
+   becker.robots.Wall 0 3 NORTH
+   becker.robots.Wall 7 4 SOUTH
+   becker.robots.Wall 3 0 WEST
+   becker.robots.Wall 7 3 SOUTH
+   becker.robots.Wall 0 4 NORTH
+   becker.robots.Wall 4 0 WEST
+   becker.robots.Wall 0 5 NORTH
+   becker.robots.Wall 7 2 SOUTH
+   becker.robots.Wall 5 0 WEST
+   becker.robots.Wall 7 1 SOUTH
+   becker.robots.Wall 0 6 NORTH
+   becker.robots.Wall 6 0 WEST
+   becker.robots.Wall 7 0 SOUTH
+   becker.robots.Wall 7 0 WEST
+   becker.robots.Wall 0 7 NORTH
+   becker.robots.Wall 0 8 NORTH
+   becker.robots.Wall 4 9 EAST
+   becker.robots.Wall 0 9 NORTH
+   becker.robots.Wall 5 9 EAST
+   becker.robots.Wall 6 9 EAST
+   becker.robots.Wall 7 9 EAST
+   becker.robots.Wall 0 9 NORTH
+   becker.robots.Wall 0 9 EAST
+   becker.robots.Wall 2 9 EAST
+   becker.robots.Wall 3 9 EAST
+   becker.robots.Wall 7 8 SOUTH
