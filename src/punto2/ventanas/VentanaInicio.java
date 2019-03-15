@@ -64,6 +64,4 @@ public class VentanaInicio {
         stage.setScene(scene);
         stage.show();
     }
-    
-    
 }

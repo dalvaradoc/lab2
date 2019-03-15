@@ -37,5 +37,11 @@ public class Aportante extends Persona{
     public double getCuenta() {
         return cuenta;
     }
+
+    public ArrayList<Prestamo> getPrestamos() {
+        return prestamos;
+    }
+    
+    
     
 }

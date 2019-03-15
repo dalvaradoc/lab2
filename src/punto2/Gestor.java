@@ -85,6 +85,16 @@ public class Gestor {
                 out.print(s.getNombreProyecto() + "," + s.getDescripcion() + "," + s.getMontoActual() +
                         "," + s.getMontoMinimo() + "," + s.getEstado() + ",");
             }
+            out.print("\r\n");
+        }
+        for (Aportante a : aportantes){
+            out.print("aportante," + a.getNombre() + "," + a.getApellido() + "," + a.getCorreo() + 
+                    "," + a.getCuenta() + ",");
+            out.print(a.getPrestamos().size() + ",");
+            for (Prestamo p : a.getPrestamos()){
+                out.print(p.getMonto() + "," + p.getInteres() + "," + p.getTiempoMeses() + ",");
+            }
+            out.print("\r\n");
         }
         out.flush();
         out.close();
@@ -100,7 +110,11 @@ public class Gestor {
             String[] line = sc.nextLine().split(",");
             switch (line[0]){
                 case "aportante":
-                    this.addAportante(new Aportante(line[1], line[2], line[3], Double.parseDouble(line[4])));
+                    Aportante a = new Aportante(line[1], line[2], line[3], Double.parseDouble(line[4]));
+                    for (int i = 0; i < Integer.parseInt(line[5]); i++){
+                        a.addPrestamo(new Prestamo(Double.parseDouble(line[6]), Double.parseDouble(line[7]), Integer.parseInt(line[8]), a));
+                    }
+                    this.addAportante(a);
                     break;
                 case "promotor":
                     Promotor p = new Promotor(line[1], line[2], line[3]);

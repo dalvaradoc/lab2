@@ -34,7 +34,7 @@ public class Solicitud {
         
         info = new GridPane();
         info.add(new Text("Descripcion: "), 0, 0);
-        info.add(new Text(this.nombreProyecto), 1, 0);
+        info.add(new Text(this.descripcion), 1, 0);
         info.add(new Text("Valor: "), 0, 1);
         info.add(new Text(Double.toString(this.montoActual)), 1, 1);
         info.add(new Text("Estado: "), 0, 2);

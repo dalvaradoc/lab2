@@ -6,6 +6,7 @@
 package punto2.ventanas;
 
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.StackPane;
@@ -20,13 +21,18 @@ public class VentanaSubastas {
     private Scene scene;
     private StackPane pane;
     private ListView<TitledPane> subastas;
+    private Button btnVolver;
+    private Button btnAddSubasta;
+    private VBox vbox;
 
     public VentanaSubastas() {
         pane = new StackPane();
         
         subastas = new ListView<>();
+        btnVolver = new Button("Volver");
+        btnAddSubasta = new Button("Agregar subasta");
         
-        VBox vbox = new VBox(subastas);
+        vbox = new VBox(subastas, btnVolver);
         
         pane.getChildren().add(vbox);
         
@@ -49,6 +55,18 @@ public class VentanaSubastas {
     public ListView<TitledPane> getSubastas() {
         return subastas;
     }
+
+    public Button getBtnVolver() {
+        return btnVolver;
+    }
+
+    public Button getBtnAddSubasta() {
+        return btnAddSubasta;
+    }
+
+    public VBox getVbox() {
+        return vbox;
+    }  
     
     
     

@@ -1,1 +1,3 @@
 promotor,Nombre,Apellido,correo@gmail.com,1,Nombre Proyecto,Descripcion del proyecto lel,100.0,20.0,activa,
+promotor,Promotor,Uno,prom@uno.com,0,
+aportante,Aportante,Uno,apor@uno.com,0.0,0,

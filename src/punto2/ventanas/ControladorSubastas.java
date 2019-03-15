@@ -29,25 +29,29 @@ public class ControladorSubastas {
         this.ventana = new VentanaSubastas();
         //EventosBotones
         
+        ventana.getBtnVolver().setOnAction(new EventoVolverInicio());
+        
     }
     
     public void mostrarVentana (){
         for (Solicitud s : modelo.getGestor().getSolicitudes()){
+            if (s.getEstado().equals("cancelado")){
+                continue;
+            }
             ventana.getSubastas().getItems().add(new TitledPane(s.getNombreProyecto(), s.getInfo()));
         }
-        ventana.mostrar(Singleton.getSingleton().getStage());
-    }
-    
-    private class SignUp implements EventHandler<ActionEvent>{
-        @Override
-        public void handle(ActionEvent event) {
+        Singleton.getSingleton().getStage().setTitle("Sign in as " + modelo.getUsuario().getNombre());
+        if (modelo.getUsuario().getClass().getSimpleName().equals("Promotor")){
+            ventana.getVbox().getChildren().add(ventana.getBtnAddSubasta());
         }
+        ventana.mostrar(Singleton.getSingleton().getStage());
     }
     
     private class EventoVolverInicio implements EventHandler<ActionEvent>{
         @Override
         public void handle(javafx.event.ActionEvent event) {
-            
+            ControladorInicio contInicio = new ControladorInicio(modelo);
+            contInicio.mostrarVista();
         }   
     }
 }
