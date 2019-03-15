@@ -40,7 +40,7 @@ public class Sistema {
         Thing zonaEnvio = new Thing(ciudad, 8, 9);
         zonaEnvio.getIcon().setLabel("Zona Envio");
         
-        //Se crean los 20 estantes
+        //Se crean los 20 estantes-robots
         int index = 0;
         for (int i = 0; i < 4; i++){
             for (int j = 0; j < 5; j++){
@@ -51,6 +51,16 @@ public class Sistema {
                 estantes[index].getIcon().setLabel(Integer.toString(index+1));
                 index++;
             }
+        }
+        
+        //Añado panes aleatorios en cada estante
+        for (int i = 0; i < 20; i++){
+            ArrayList<Producto> randomProductos = new ArrayList<>();
+            int randomc = (int)Math.floor(Math.random()*5);
+            for (int m = 0; m < randomc;m++){
+                randomProductos.add(new Producto("Pan", 200.0));
+            }
+            estantes[i].getCaja((int)Math.floor(Math.random()*2)+1).addProductos(randomProductos);
         }
     }
     

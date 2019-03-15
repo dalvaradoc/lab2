@@ -78,7 +78,9 @@ public class Menu {
                                 }
                                 break;
                             case 0:
-                                sistema.llenarEstante(caja, prodAdd);
+                                if (sistema.llenarEstante(caja, prodAdd)){
+                                    System.out.println("Productos añadidos correctamente");
+                                }
                                 cicloAdd = false;
                                 break;
                         }
@@ -137,7 +139,9 @@ public class Menu {
                                     switch (opcF){
                                         case 1:
                                             if (sistema.isEstanteEnZona()){
-                                                prodsF.addAll(sistema.getProductos(pedido));
+                                                if(prodsF.addAll(sistema.getProductos(pedido))){
+                                                    System.out.println("Se han recolectado los productos");
+                                                }
                                             }
                                             break;
                                         case 2:
