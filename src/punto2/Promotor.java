@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Promotor extends Persona{
     
-    ArrayList<Solicitud> solicitudes;
+    private ArrayList<Solicitud> solicitudes;
     
     public Promotor(String nombre, String apellido, String correo) {
         super(nombre, apellido, correo);
@@ -28,4 +28,9 @@ public class Promotor extends Persona{
         s.setEstado("cancelado");
         return true;
     }
+
+    public ArrayList<Solicitud> getSolicitudes() {
+        return solicitudes;
+    }
+    
 }

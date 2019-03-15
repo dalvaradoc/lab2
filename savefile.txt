@@ -1,0 +1,1 @@
+promotor,Nombre,Apellido,correo@gmail.com,1,Nombre Proyecto,Descripcion del proyecto lel,100.0,20.0,activa,

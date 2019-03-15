@@ -5,8 +5,13 @@
  */
 package punto2;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 /**
  *
@@ -28,28 +33,92 @@ public class Gestor {
         this.subastasRealizadas = new HashMap<>();
     }
     
-    public boolean addSolicitud (String nP, String desc, double minMonto, Promotor prom){
-        Solicitud newSol = new Solicitud(nP, desc, minMonto, prom);
+    public boolean addSolicitud (String nP, String desc,double inMonto, double minMonto, Promotor prom){
+        Solicitud newSol = new Solicitud(nP, desc, inMonto, minMonto, prom);
         prom.addSolicitud(newSol);
+//        this.guardarInformacion();
         return solicitudes.add(newSol);
     }
     
-    public boolean aceptar (Solicitud s, Prestamo p){
+    public boolean aceptar (Solicitud s, Prestamo p) {
         subastasRealizadas.put(s, p);
         s.setEstado("aceptado");
+//        this.guardarInformacion();
         return true;
     }
     
-    public boolean addAportante (Aportante a){
-        return aportantes.add(a);
+    public boolean addAportante (Aportante a) {
+        boolean r = aportantes.add(a);
+//        this.guardarInformacion();
+        return r;
     }
     
-    public boolean addPromotor (Promotor p){
-        return promotores.add(p);
+    public boolean addPromotor (Promotor p) {
+        boolean r = promotores.add(p);
+//        this.guardarInformacion();
+        return r;
+    }
+    
+    public Persona getUsuario (String correo){
+        for (Promotor p : promotores){
+            if (p.getCorreo().equals(correo)){
+                return p;
+            }
+        }
+        for (Aportante a : aportantes){
+            if (a.getCorreo().equals(correo)){
+                return a;
+            }
+        }
+        return null;
+    }
+    
+    public void guardarInformacion () throws IOException {
+        File saveFile = new File("savefile.txt");
+        saveFile.createNewFile();
+        PrintStream out = new PrintStream(saveFile);
+        for (Promotor p : promotores){
+            out.print("promotor," + p.getNombre() + "," + p.getApellido() + "," + p.getCorreo() + 
+                    ",");
+            out.print(p.getSolicitudes().size() + ",");
+            for (Solicitud s : p.getSolicitudes()){
+                out.print(s.getNombreProyecto() + "," + s.getDescripcion() + "," + s.getMontoActual() +
+                        "," + s.getMontoMinimo() + "," + s.getEstado() + ",");
+            }
+        }
+        out.flush();
+        out.close();
+    }
+    
+    public void cargarInformacion () throws FileNotFoundException, IOException {
+        File saveFile = new File("savefile.txt");
+        if (!saveFile.exists()){
+            return;
+        }
+        Scanner sc = new Scanner(saveFile);
+        while(sc.hasNextLine()){
+            String[] line = sc.nextLine().split(",");
+            switch (line[0]){
+                case "aportante":
+                    this.addAportante(new Aportante(line[1], line[2], line[3], Double.parseDouble(line[4])));
+                    break;
+                case "promotor":
+                    Promotor p = new Promotor(line[1], line[2], line[3]);
+                    this.addPromotor(p);
+                    for (int i = 0; i < Integer.parseInt(line[4]); i++){
+                        this.addSolicitud(line[5], line[6], Double.parseDouble(line[7]), Double.parseDouble(line[8]), p);
+                    }
+                    break;
+            }
+        }
     }
     
 //+ guardarInformacion () : void
 //+ cargarInformacion () : void
+
+    public ArrayList<Solicitud> getSolicitudes() {
+        return solicitudes;
+    }
 
     
 }

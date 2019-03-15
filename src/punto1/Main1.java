@@ -13,10 +13,10 @@ import java.util.Scanner;
 /**
  *
  * @author Alejandro
- */
-public class Main1 {
-    
-    public static void main (String[] args){
-        Menu menu = new Menu();
-    }
-}
+// */
+//public class Main1 {
+//    
+//    public static void main (String[] args){
+//        Menu menu = new Menu();
+//    }
+//}
